@@ -2,7 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  if nombre
+    p Welcome to #{title}, 
+      strong #{nombre}
+  else
+    p Welcome to #{title}
 
   script(src="https://cdn.socket.io/socket.io-1.3.5.js")
   script.
