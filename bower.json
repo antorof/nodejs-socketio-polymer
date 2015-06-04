@@ -1,0 +1,23 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "authors": [
+    "antorof <antorof.dev@gmail.com>"
+  ],
+  "main": "bin/www",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "webcomponentsjs": "^0.7.3",
+    "iron-icon": "polymerelements/iron-icon#^1.0.0",
+    "iron-icons": "polymerelements/iron-icons#^1.0.0",
+    "paper-elements": "PolymerElements/paper-elements"
+  }
+}
