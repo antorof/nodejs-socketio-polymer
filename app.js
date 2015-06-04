@@ -24,6 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 app.use('/', routes);
+//app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/bower_components',  express.static(path.join(__dirname, 'bower_components')));
+app.use('/components',  express.static(path.join(__dirname, 'components')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

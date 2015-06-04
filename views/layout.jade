@@ -3,5 +3,13 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    //link(rel='stylesheet', href='/bower_components/paper-toggle-button/paper-toggle-button.css')
+    //link(rel="import" href="bower_components/paper-elements/paper-elements.html")
+    script(src="/bower_components/webcomponentsjs/webcomponents-lite.js")
+    link(rel="import" href="/bower_components/paper-button/paper-button.html")
+    link(rel="import" href="/bower_components/paper-toggle-button/paper-toggle-button.html")
+    block head
   body
     block content
+
+    block quillo

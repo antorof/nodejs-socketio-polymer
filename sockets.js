@@ -3,6 +3,7 @@ module.exports = function(io) {
 
   io.sockets.on('connection', function (socket) {
     console.log("NUEVA CONEXION");
+    socket.emit("news","Hello visitor");
     socket.on('captain', function(data) {
       console.log(data);
       socket.emit('Hello');

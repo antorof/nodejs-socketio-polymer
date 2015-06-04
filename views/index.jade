@@ -1,17 +1,46 @@
 extends layout
+block head
+  link(rel="import" href="/components/hello-world.html")
+  link(rel="import" href="/components/btn-cl.html")
+
+  style.
+    #my-btn {
+      /*background: green;*/
+      color: #00B7FF;
+    }
 
 block content
   h1= title
   if nombre
-    p Welcome to #{title}, 
+    p Welcome to #{title},&nbsp
       strong #{nombre}
   else
     p Welcome to #{title}
 
   script(src="https://cdn.socket.io/socket.io-1.3.5.js")
+
+block quillo
+  p Quilloooo
+  hello-world(who="Panete")
+  //hello-world-jade(who="Panete")
+  //btn-collab(who="Panete")
+
+  btn-cl(who="Panete" on-click="flus()") BTN-CL
+
+  paper-button(flat) button
+  paper-button(raised) Botón elevado
+  paper-button(tabindex="0" toggles role="button" aria-pressed="true" aria-disabled="false" class="x-scope paper-button-0" active="") Toggle
+
+  paper-toggle-button hello
+
+  paper-button(tabindex="0" toggles) button
+
   script.
     var socket = io.connect('http://localhost:3000/');
     socket.on('news', function (data) {
       console.log(data);
       socket.emit('my other event', { my: 'data' });
     })
+    function flus() {
+      console.log("asdasd");
+    }
