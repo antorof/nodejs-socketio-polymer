@@ -1,0 +1,52 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+<dom-module name="btn-collab" id="btn-collab" attributes="btntype">
+    <style>
+        :host {
+            color: #00af00;
+        }
+        paper-button{
+            border-radius: 25px;
+        }
+        /*paper-button[toggles].active{*/
+            /*background: #6fe76c;*/
+        /*}*/
+        paper-button[toggles][active] {
+            background-color: rgba(0, 175, 0, 0.25);
+        }
+    </style>
+
+    <template>
+        <paper-button toggles id="btn"><content></content></paper-button>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'btn-collab',
+            hostAttributes: {
+                "btntype":"flat"
+            },
+            listeners: {
+                'btn.tap': 'specialTap'
+//                'tmp.tap': 'tmpTap'
+            },
+            specialTap: function(e) {
+                var _this = this;
+//                console.log(e); // Evento
+//                console.log(this.$.btn); // Elemento paper-button
+//                console.log(Polymer.dom(this.$.btn));
+                setTimeout(function(){
+//                    e.target.click(); // Desencadena cascada
+                    _this.$.btn.active=false;
+
+                },1000);
+            },
+            ready:function(){
+                console.log(this);
+            }
+
+        });
+    </script>
+
+</dom-module>
