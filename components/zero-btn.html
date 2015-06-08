@@ -29,8 +29,8 @@
     </style>
 
     <template>
-        <paper-material animated style='' class=''>
-            <button>
+        <paper-material id="mat" animated style='' class=''>
+            <button id="btn">
                 <content></content>
                 <paper-ripple fit></paper-ripple>
             </button>
@@ -39,7 +39,23 @@
 
     <script>
         Polymer({
-            is: 'zero-btn'
+            is: 'zero-btn',
+            listeners: {
+                'btn.tap': '_tapListener',
+                'btn.down': '_downListener',
+                'btn.up': '_upListener'
+            },
+            _tapListener: function() {
+                console.log('TAP');
+            },
+            _downListener: function() {
+                console.log('DOWN');
+                this.$.mat.elevation = 4;
+            },
+            _upListener: function() {
+                console.log('UP');
+                this.$.mat.elevation = 1;
+            }
         });
     </script>
 
