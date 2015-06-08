@@ -32,7 +32,7 @@
         <paper-material id="mat" animated style='' class=''>
             <button id="btn">
                 <content></content>
-                <paper-ripple fit></paper-ripple>
+                <paper-ripple id="rip" fit></paper-ripple>
             </button>
         </paper-material>
     </template>
@@ -43,10 +43,24 @@
             listeners: {
                 'btn.tap': '_tapListener',
                 'btn.down': '_downListener',
-                'btn.up': '_upListener'
+                'btn.up': '_upListener',
+                'click': '_clickListener',
+                'click': '_manageRipple'
             },
-            _tapListener: function() {
+            _clickListener: function(e) {
+                console.log('CLICK');
+//                console.log(e);
+            },
+            _manageRipple: function(e) {
+                if(e.layerX==0 && e.layerY==0) {
+                    _this = this;
+                    this.$.rip.downAction(e);
+                    setTimeout(function(){_this.$.rip.upAction(e)},100);
+                }
+            },
+            _tapListener: function(e) {
                 console.log('TAP');
+//                console.log(e);
             },
             _downListener: function() {
                 console.log('DOWN');
