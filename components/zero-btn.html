@@ -1,0 +1,46 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="/bower_components/paper-material/paper-material.html">
+
+<dom-module name="zero-btn" id="zero-btn" attributes="btntype">
+    <style>
+        :host {
+            /*color: #00af00;*/
+            display: inline-block;
+            margin: 0 4px 4px;
+            border-radius: 3px;
+        }
+        paper-material {
+            /*border-radius: inherit;*/
+            padding: 8px 10px;
+        }
+        button {
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            background-color: Transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+        }
+
+    </style>
+
+    <template>
+        <paper-material animated style='' class=''>
+            <button>
+                <content></content>
+                <paper-ripple fit></paper-ripple>
+            </button>
+        </paper-material>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'zero-btn'
+        });
+    </script>
+
+</dom-module>
