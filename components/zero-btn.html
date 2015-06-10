@@ -29,7 +29,7 @@
     </style>
 
     <template>
-        <paper-material id="mat" animated style='' class=''>
+        <paper-material id="mat" animated style='' elevation="{{updateElevation(flat)}}">
             <button id="btn">
                 <content></content>
                 <paper-ripple id="rip" fit></paper-ripple>
@@ -40,6 +40,13 @@
     <script>
         Polymer({
             is: 'zero-btn',
+            properties: {
+                flat: {
+                    type:Boolean,
+                    value:false,
+                    notify: true
+                }
+            },
             listeners: {
                 'btn.tap': '_tapListener',
                 'btn.down': '_downListener',
@@ -47,6 +54,19 @@
                 'click': '_clickListener',
                 'click': '_manageRipple'
             },
+            updateElevation: function(nFlat, notify) {
+//                console.log('upd: '+nFlat);
+                this.flat = nFlat;
+//                console.log('set: '+this.flat);
+//                this.$.mat.elevation = nFlat?0:1;
+//                console.log('el: '+this.$.mat.elevation);
+//                this.$.mat.elevation = 1;
+                return nFlat?0:1;
+
+//                this.notifyPath('flat', this.flat);
+
+            },
+            /******************************* LISTENERS *****************************/
             _clickListener: function(e) {
                 console.log('CLICK');
 //                console.log(e);
@@ -64,11 +84,22 @@
             },
             _downListener: function() {
                 console.log('DOWN');
-                this.$.mat.elevation = 4;
+                if(!this.flat)
+                    this.$.mat.elevation = 4;
             },
             _upListener: function() {
                 console.log('UP');
-                this.$.mat.elevation = 1;
+                if(!this.flat)
+                    this.$.mat.elevation = 1;
+            },
+            /******************************* READY *********************************/
+            ready: function(){
+                console.log(this);
+                this.updateElevation(this.flat,true);
+//                if(this.flat)
+//                    this.$.mat.elevation = 0;
+//                else
+//                    this.$.mat.elevation = 1;
             }
         });
     </script>
