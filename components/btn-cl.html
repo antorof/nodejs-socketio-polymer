@@ -1,29 +1,15 @@
-<!-- Import Polymer -->
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 
-<!-- Define your custom element -->
-<dom-module name="btn-cl" id="btn-cl" attributes="who" extends="paper-button" on-click="aws">
+<dom-module name="btn-cl" id="btn-cl">
 
-    <style>
-        :host {
-            color: #008800;
-        }
-    </style>
     <template>
-        <strong><content></content></strong>
-        <shadow></shadow>
+        <paper-button raised><content></content></paper-button>
     </template>
 
     <script>
         Polymer({
-            is: 'btn-cl',
-            hostAttributes: {
-                who: 'World' // Parametro por defecto
-            }
-            aws:function(){
-                console.log("CLICK")
-            }
+            is: 'btn-cl'
         });
     </script>
 

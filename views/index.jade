@@ -2,11 +2,42 @@ extends layout
 block head
   link(rel="import" href="/components/hello-world.html")
   link(rel="import" href="/components/btn-cl.html")
+  link(rel="import" href="/components/btn-collab.html")
+  link(rel="import" href="/components/zero-btn.html")
+  link(rel="import" href="/bower_components/paper-ripple/paper-ripple.html")
+  link(rel="import" href="/bower_components/paper-material/paper-material.html")
 
   style.
     #my-btn {
       /*background: green;*/
       color: #00B7FF;
+    }
+    .mibtn-0 {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      min-width: 5.14em;
+      margin: 0 0.29em;
+      background: transparent;
+      text-align: center;
+      text-transform: uppercase;
+      outline: none;
+      border-radius: 3px;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      z-index: 0;
+    }
+    .mibtn-0 button {
+      background-color: Transparent;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
     }
 
 block content
@@ -28,12 +59,39 @@ block quillo
   btn-cl(who="Panete" on-click="flus()") BTN-CL
 
   paper-button(flat) button
-  paper-button(raised) Botón elevado
-  paper-button(tabindex="0" toggles role="button" aria-pressed="true" aria-disabled="false" class="x-scope paper-button-0" active="") Toggle
+  paper-button(raised id='unode' on-click='flus()') Botón elevado
+  paper-button(tabindex="0" toggles active) Toggle
 
   paper-toggle-button hello
 
-  paper-button(tabindex="0" toggles) button
+  paper-button(tabindex="0" toggles) TOGGLE
+
+  div(style="clear:both")
+
+  btn-collab(btntype='raised') Botón colaborativo
+
+  paper-button(id='a22' tabindex="0" toggles active class="colorful") colorful
+  paper-button(onclick='asd()' tabindex="0" toggles active class="colorful") colorful
+
+  div(style="clear:both")
+
+  div
+    paper-button( tabindex="0" toggles active class="colorful") colorful
+
+  div(id="mipanel" class="mibtn-0" style="display:inline-block")
+    paper-material(animated style='' class='mibtn-0')
+      button(onclick="flus()" class='mibtn-0') caracaqui
+        paper-ripple(fit)
+
+  div(style="clear:both")
+
+  btn-cl custom-button
+
+  div(style="clear:both")
+
+  div(class='separator')
+
+  zero-btn( id="zero") ZERO-BTN
 
   script.
     var socket = io.connect('http://localhost:3000/');
@@ -44,3 +102,9 @@ block quillo
     function flus() {
       console.log("asdasd");
     }
+    function asd() {
+      var supu = document.getElementById('a22');
+      console.log(supu);
+    }
+
+    var s = document.getElementById('zero');
