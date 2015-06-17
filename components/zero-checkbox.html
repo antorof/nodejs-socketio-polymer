@@ -1,0 +1,52 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<!--<link rel="import" href="/bower_components/paper-ripple/paper-ripple.html">-->
+<!--<link rel="import" href="/bower_components/paper-material/paper-material.html">-->
+<!--<link rel="import" href="/components/ripple-behavior.html">-->
+
+<dom-module name="zero-checkbox" id="zero-checkbox">
+    <style>
+        :host {
+            /*color: #d3a700;*/
+            /*--paper-checkbox-unchecked-color: red;*/
+            /*--paper-checkbox-unchecked-ink-color: green;*/
+            /*--paper-checkbox-checked-color: blue;*/
+            /*--paper-checkbox-checked-ink-color: #d300c2;*/
+            --paper-checkbox-label-color: var(color);
+        }
+        paper-checkbox {
+            
+        }
+
+    </style>
+
+    <template>
+        <paper-checkbox id="cb">
+            <content></content>
+        </paper-checkbox>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'zero-checkbox',
+            behaviors: [],
+            properties: {
+
+            },
+            listeners: {
+                'click': '_clickListener'
+            },
+            _clickListener: function(e){
+                console.log("CLICK");
+                if(!e.__polymerGesturesHandled) {
+                    this.$.cb.checked = !this.$.cb.checked;
+                }
+            },
+            /******************************* READY *********************************/
+            ready: function(){
+
+            }
+        });
+    </script>
+
+</dom-module>
