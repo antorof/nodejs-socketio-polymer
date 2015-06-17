@@ -1,0 +1,51 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<!--<link rel="import" href="/bower_components/paper-ripple/paper-ripple.html">-->
+<!--<link rel="import" href="/bower_components/paper-material/paper-material.html">-->
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+
+<dom-module name="zero-connector" id="zero-connector">
+    <!--<style></style>-->
+
+    <!--<template>-->
+    <!--</template>-->
+
+    <script>
+        var socket;
+        Polymer({
+            is: 'zero-connector',
+            properties: {
+                APIKey: {
+                    type: String,
+                    value: undefined,
+                    notify: true,
+                    reflectToAttribute: true
+                },
+                server: {
+                    type: String,
+                    value: undefined,
+                    notify: true,
+                    reflectToAttribute: true
+                }
+            },
+//            listeners: {
+//                'btn.tap': '_tapListener',
+//                'btn.down': '_downListener',
+//                'btn.up': '_upListener',
+//                'click': '_clickListener',
+//                'click': '_manageRipple'
+//            },
+            /******************************* READY *********************************/
+            ready: function(){
+                //'http://localhost:3000/'
+                console.log("SERVER: "+this.server);
+                socket = io.connect(this.server);
+                socket.on('news', function (data) {
+                    console.log(data);
+                    socket.emit('my other event', { my: 'data' });
+                });
+                console.log("ZERO-CONNECTOR READY");
+            }
+        });
+    </script>
+
+</dom-module>

@@ -4,6 +4,7 @@ block head
   link(rel="import" href="/components/btn-cl.html")
   link(rel="import" href="/components/btn-collab.html")
   link(rel="import" href="/components/zero-btn.html")
+  link(rel="import" href="/components/zero-connector.html")
   link(rel="import" href="/bower_components/paper-ripple/paper-ripple.html")
   link(rel="import" href="/bower_components/paper-material/paper-material.html")
 
@@ -91,14 +92,11 @@ block quillo
 
   div(class='separator')
 
-  zero-btn( id="zero") ZERO-BTN
+  zero-btn( id="zero" ) ZERO-BTN
 
+  zero-connector( server="http://localhost:3000/" )
+  
   script.
-    var socket = io.connect('http://localhost:3000/');
-    socket.on('news', function (data) {
-      console.log(data);
-      socket.emit('my other event', { my: 'data' });
-    })
     function flus() {
       console.log("asdasd");
     }
