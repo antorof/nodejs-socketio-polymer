@@ -6,9 +6,10 @@
         _manageRipple: function(e) {
             console.log('MANAGE-RIPPLE');
             if(e.layerX==0 && e.layerY==0) {
-                _this = this;
-                this.$.rip.downAction(e);
-                setTimeout(function(){_this.$.rip.upAction(e)},100);
+//                _this = this;
+//                this.$.rip.downAction(e);
+//                setTimeout(function(){_this.$.rip.upAction(e)},100);
+                this.$.rip.simulatedRipple();
             }
         },
 

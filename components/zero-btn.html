@@ -12,19 +12,33 @@
             border-radius: 3px;
         }
         paper-material {
-            /*border-radius: inherit;*/
-            padding: 8px 10px;
+            border-radius: inherit;
+            padding: 8px 10px 8px;
         }
-        button {
+        paper-ripple {
+            border-radius: inherit;
+        }
+        a,button {
+            border-radius: inherit;
+            box-sizing: border-box;
+            padding: 1px 6px;
+            margin: 0;
+            display: inline-block;
             color: inherit;
             font-family: inherit;
             font-size: inherit;
-            background-color: Transparent;
-            background-repeat: no-repeat;
+            background: Transparent no-repeat;
             border: none;
             cursor: pointer;
             overflow: hidden;
-            outline: none;
+            outline: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        button:focus{
+            font-weight: 500;
         }
 
     </style>
@@ -54,6 +68,7 @@
                 'btn.down': '_downListener',
                 'btn.up': '_upListener',
                 'click': '_clickListener',
+                'btn.focus' : '_focusListener'
             },
             updateElevation: function(nFlat, notify) {
 //                console.log('upd: '+nFlat);
@@ -70,6 +85,10 @@
             /******************************* LISTENERS *****************************/
             _clickListener: function(e) {
                 console.log('CLICK');
+//                console.log(e);
+            },
+            _focusListener: function(e) {
+                console.log('FOCUS');
 //                console.log(e);
             },
             _tapListener: function(e) {
