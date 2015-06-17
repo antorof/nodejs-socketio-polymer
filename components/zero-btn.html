@@ -1,8 +1,9 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/paper-ripple/paper-ripple.html">
 <link rel="import" href="/bower_components/paper-material/paper-material.html">
+<link rel="import" href="/components/ripple-behavior.html">
 
-<dom-module name="zero-btn" id="zero-btn" attributes="btntype">
+<dom-module name="zero-btn" id="zero-btn">
     <style>
         :host {
             /*color: #00af00;*/
@@ -40,6 +41,7 @@
     <script>
         Polymer({
             is: 'zero-btn',
+            behaviors: [RippleBehavior],
             properties: {
                 flat: {
                     type:Boolean,
@@ -52,7 +54,6 @@
                 'btn.down': '_downListener',
                 'btn.up': '_upListener',
                 'click': '_clickListener',
-                'click': '_manageRipple'
             },
             updateElevation: function(nFlat, notify) {
 //                console.log('upd: '+nFlat);
@@ -70,13 +71,6 @@
             _clickListener: function(e) {
                 console.log('CLICK');
 //                console.log(e);
-            },
-            _manageRipple: function(e) {
-                if(e.layerX==0 && e.layerY==0) {
-                    _this = this;
-                    this.$.rip.downAction(e);
-                    setTimeout(function(){_this.$.rip.upAction(e)},100);
-                }
             },
             _tapListener: function(e) {
                 console.log('TAP');
